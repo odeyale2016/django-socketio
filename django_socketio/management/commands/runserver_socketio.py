@@ -53,9 +53,9 @@ class Command(BaseCommand):
         start_new_thread(reload_watcher, ())
         try:
             bind = (self.addr, int(self.port))
-            print
-            print "SocketIOServer running on %s:%s" % bind
-            print
+            print()
+            print("SocketIOServer running on %s:%s" % bind)
+            print()
             handler = self.get_handler(*args, **options)
             server = SocketIOServer(bind, handler, resource="socket.io")
             server.serve_forever()
@@ -63,8 +63,8 @@ class Command(BaseCommand):
             client_end_all()
             if RELOAD:
                 server.kill()
-                print
-                print "Reloading..."
+                print()
+                print("Reloading...")
                 restart_with_reloader()
             else:
                 raise
